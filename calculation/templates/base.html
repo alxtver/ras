@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 {% load staticfiles %}
-<link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" />
+<link href="{% static " css/style.css " %}" rel="stylesheet" type="text/css" />
+
 <head>
     <title>
-        {% block title %}
-        {% endblock %}
+        {% block title %} {% endblock %}
     </title>
 </head>
+
 <body>
-{% block header %}
-      <span class="noprint">
+    {% block header %}
+    <span class="noprint">
         <div class="header">
         <div class="block_but" style="text-align: center">
         <a href="/" class="button">Главная</a>
@@ -22,29 +23,22 @@
 </div>
             </div>
         </span>
-        <hr>
+    <hr> {% endblock %} {% block script %} {% endblock %}
 
-    {% endblock %}
-
-
-{% block script %}
-
-    {% endblock %}
-
-<div class="content">
-    {% block content %}
-
-    {% endblock %}
-</div>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
 
 
-<div class="footer">
-    {% block footer %}
+    <div class="footer">
+        {% block footer %}
         <hr>
         <p>Python + Django.</p>
-    {% endblock %}
-</div><!--footer-->
+        {% endblock %}
+    </div>
+    <!--footer-->
 
 
 </body>
+
 </html>

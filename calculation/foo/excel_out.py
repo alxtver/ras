@@ -1,5 +1,5 @@
 import xlsxwriter, datetime
-from ras.models import ComplektSKCal
+from calculation.models import ComplektSKCal
 
 
 def excel_out():

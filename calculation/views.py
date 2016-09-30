@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response, render
 from calculation.models import ComplektSK, ComplektSKCal
 from calculation.foo.itog import overall, createbase, deletenull, createdickt
 from calculation.foo.itog_ostrov import overall_ostrov
+from calculation.foo.excel_out import excel_out
 
 def base(request):
     errors = []
