@@ -14,7 +14,7 @@ class ComplektSK(models.Model):
     weight = models.FloatField( blank = True, verbose_name = 'Вес')
 
     def __str__(self):
-        return '%s %s %s' % (self.name, self.price, self.weight, )
+        return '%s %s %s %s' % (self.id, self.name, self.price, self.weight)
 
 
 class ComplektSKCalc(models.Model):

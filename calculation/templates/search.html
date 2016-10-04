@@ -9,13 +9,13 @@
 {% if errors %}
 
     {% for error in errors %}
-       <p class="font_error"> {{ error }} </p>
+       <p class="danger"> {{ error }} </p>
     {% endfor %}
 
 {% endif %}
 
 <form action="" method="get">
     <input type="text" name=q>
-    <input type="submit" value="Найти">
+    <input type="submit"  value="Найти">
 </form>
 {% endblock %}

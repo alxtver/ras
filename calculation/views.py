@@ -3,6 +3,8 @@ from calculation.models import ComplektSK, ComplektSKCal
 from calculation.foo.itog import overall, createbase, deletenull, createdickt
 from calculation.foo.itog_ostrov import overall_ostrov
 from calculation.foo.excel_out import excel_out
+from django.template import loader, RequestContext
+
 
 def base(request):
     errors = []
@@ -65,7 +67,8 @@ def base(request):
         complekts = createdickt()
 
         transaction.commit()
-        return render_to_response('itogform.html', locals())
+        return render(request, 'itogform.html', locals())
+        # return render_to_response('itogform.html', locals(), context=RequestContext(request))
     else:
         return render_to_response('baseform.html', {'errors': errors})
 

@@ -9,15 +9,17 @@
 
 {% if matches %}
     <p class="table_font_text">Найдено {{ matches|length }} наименований.</p>
-    <div class="table">
-        <table>
+    <div style="width: 700px">
+        <table class="table table-striped">
         <tr>
+            <td>№</td>
 	        <td>Наименование</td>
 	        <td>Цена</td>
 	        <td>Вес</td>
           </tr>
         {% for i in matches %}
           <tr>
+            <td>{{ i.id }}</td>
 	        <td>{{ i.name }}</td>
 	        <td>{{ i.price }}</td>
 	        <td>{{ i.weight }}</td>
@@ -26,8 +28,7 @@
         </table>
     </div>
 {% else %}
-    <p class="table_font_text">Ничего не найдено.</p>
+    <p>Ничего не найдено.</p>
 {% endif %}
 
 {% endblock %}
-
