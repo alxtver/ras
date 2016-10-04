@@ -4,8 +4,10 @@ from calculation.foo.itog import overall, createbase, deletenull, createdickt
 from calculation.foo.itog_ostrov import overall_ostrov
 from calculation.foo.excel_out import excel_out
 from django.template import loader, RequestContext
+from django.db import transaction
 
 
+@transaction.atomic
 def base(request):
     errors = []
     if request.method == 'POST':
@@ -37,7 +39,7 @@ def base(request):
         while i <= count:
                  b = ComplektSK.objects.get(id=i)
                  price_i = round(b.price+(b.price/100*nacenka)-(b.price/100*discont), 2)
-                 c = ComplektSKCal(name=b.name, number=0, summ=0, price=price_i,  weight=b.weight)
+                 c = ComplektSKCal(id = b.id, name=b.name, number=0, summ=0, price=price_i,  weight=b.weight)
                  c.save()
                  i += 1
 
@@ -66,7 +68,7 @@ def base(request):
 
         complekts = createdickt()
 
-        transaction.commit()
+        #transaction.commit()
         return render(request, 'itogform.html', locals())
         # return render_to_response('itogform.html', locals(), context=RequestContext(request))
     else:

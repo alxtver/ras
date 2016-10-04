@@ -22,8 +22,8 @@ function printDiv()
 
 <div class="block1"  id="table">
 <p class="font_text"> Расчет стеллажей Русь </p>
-<div class="table">
-<table border = "1">
+<div style="width: 700px">
+<table class="table table-striped table-bordered table-condensed">
 <tr>
 	<td>Наименование</td>
     <td>Количество</td>
@@ -49,9 +49,9 @@ function printDiv()
 </div>
 </div>
     <div class="block1" >
-    <input type="button" class="button" value="Печать" onclick="printDiv()"> </input>
-{% load staticfiles %}
-    <a href="{{ href }}" class="button">Сохранить</a>
+    <input type="button" class="btn btn-primary btn-lg" value="Печать" onclick="printDiv()"> </input>
+
+    <a href="{{ href }}" class="btn btn-success btn-lg" >Excel</a>
     </div>
     </form>
 {% endblock %}

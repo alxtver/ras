@@ -4,7 +4,7 @@ from calculation.models import ComplektSKCal
 
 def excel_out():
     date = datetime.datetime.now()
-    name = date.strftime('./ras/static/xls/%H_%M_%S_%d_%m_%Y.xlsx')
+    name = date.strftime('./mysite/static/xls/%H_%M_%S_%d_%m_%Y.xlsx')
     href = date.strftime('/static/xls/%H_%M_%S_%d_%m_%Y.xlsx')
 
     workbook = xlsxwriter.Workbook(name)
