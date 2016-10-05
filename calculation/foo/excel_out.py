@@ -29,23 +29,25 @@ def WriteToExcel():
     row = 3
     col = 1
     values = ComplektSKCal.objects.all()
+    sm, sw = 0, 0
     for value in values:
         worksheet.write(row, col, value.name, format)
         worksheet.write(row, col + 1, value.number, format1)
         worksheet.write(row, col + 2, value.price, format1)
         worksheet.write(row, col + 3, value.summ, format1)
+        sm += int(value.summ)
         worksheet.write(row, col + 4, value.weight, format2)
+        sw += int(value.weight)
         i += 1
         row += 1
     strrow = str(row)
-    formsumm ='=SUM(E4:E' + strrow + ')'
-    formweight ='=SUM(F4:F' + strrow + ')'
+
 # Write a total using a formula.
     worksheet.write(row, 1, 'Итого', format)
     worksheet.write(row, 2, '', format)
     worksheet.write(row, 3, '', format)
-    worksheet.write(row, 4, formsumm, format)
-    worksheet.write(row, 5, formweight, format)
+    worksheet.write(row, 4, sm, format)
+    worksheet.write(row, 5, sw, format)
     workbook.close()
 
     output.seek(0)
