@@ -1,15 +1,14 @@
-import xlsxwriter, datetime
 from calculation.models import ComplektSKCal
+from django.http import HttpResponse
+import io
+from xlsxwriter.workbook import Workbook
 
 
-def excel_out():
-    date = datetime.datetime.now()
-    name = date.strftime('./mysite/static/xls/%H_%M_%S_%d_%m_%Y.xlsx')
-    href = date.strftime('/static/xls/%H_%M_%S_%d_%m_%Y.xlsx')
+def WriteToExcel():
+    output = io.BytesIO()
 
-    workbook = xlsxwriter.Workbook(name)
+    workbook = Workbook(output, {'in_memory': True})
     worksheet = workbook.add_worksheet()
-
     bold = workbook.add_format({'bold': 1,
                                 'font_size': 16})
     format = workbook.add_format({'border': 2,
@@ -48,4 +47,9 @@ def excel_out():
     worksheet.write(row, 4, formsumm, format)
     worksheet.write(row, 5, formweight, format)
     workbook.close()
-    return href
+
+    output.seek(0)
+
+    response = HttpResponse(output.read(), content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    response['Content-Disposition'] = "attachment; filename=report.xlsx"
+    return response

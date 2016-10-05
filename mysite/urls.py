@@ -5,8 +5,9 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    url('^$', views.base),
+    url(r'^$', views.base),
     url(r'^admin/', admin.site.urls),
     url(r'^catalog/$', views.catalog),
-    url('^search/$', views.search),
+    url(r'^excel/$', views.excel),
+    url(r'^search/$', views.search),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

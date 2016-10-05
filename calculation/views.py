@@ -2,9 +2,13 @@ from django.shortcuts import render_to_response, render
 from calculation.models import ComplektSK, ComplektSKCal
 from calculation.foo.itog import overall, createbase, deletenull, createdickt
 from calculation.foo.itog_ostrov import overall_ostrov
-from calculation.foo.excel_out import excel_out
+from calculation.foo.excel_out import WriteToExcel
 from django.template import loader, RequestContext
 from django.db import transaction
+from django.http import HttpResponse
+
+
+
 
 
 @transaction.atomic
@@ -61,14 +65,10 @@ def base(request):
                  b.save()
                  i += 1
         deletenull()
-        href = excel_out()
+
         order = ComplektSKCal.objects.all().order_by('name')
         x = list(order)
-
-
         complekts = createdickt()
-
-        #transaction.commit()
         return render(request, 'itogform.html', locals())
         # return render_to_response('itogform.html', locals(), context=RequestContext(request))
     else:
@@ -94,3 +94,8 @@ def search(request):
             matches = list(names)
             return render_to_response('search_results.html', {'matches': matches, 'query': q})
     return render_to_response('search.html', {'errors': errors})
+
+
+def excel(request):
+    response = WriteToExcel()
+    return response
