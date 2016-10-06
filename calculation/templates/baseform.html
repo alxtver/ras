@@ -10,14 +10,14 @@
             <input class="form-control" type="number" min="0" name=discont value="0" size="5"> </p>
     </div>
 
-    <div class="container">
+
         <div class="form-group" style="max-width: 600px;">
             <h4>Пристенные стеллажи</h4>
             <table class="table-striped table-condensed">
                 <tr>
                     <td><label for="height_stell">Высота стеллажей</label></td>
                     <td><label for="base_polka">Базовая полка</label></td>
-                    <td><label for="dop_stoyka">Колличество дополнительных стоек</label></td>
+                    <td><label for="dop_stoyka">Количество дополнительных стоек</label></td>
                 </tr>
                 <tr valign="top">
                     <td><select class="form-control input-sm" name="height_stell">
@@ -25,7 +25,7 @@
                 <option value="1600">1600</option>
                 <option value="2400">2400</option>
                 </select></td>
-                    <td><select class="form-control input-sm" name="base_polka">
+                    <td><select class="form-control input-sm" name="base_polka" style="min-width: 65px;">
                 <option value="500">500</option>
                 <option value="400">400</option>
                 <option value="600">600</option>
@@ -39,7 +39,7 @@
                     <td>
                         <h5>Наименование</h5></td>
                     <td>
-                        <h5>Колличество</h5></td>
+                        <h5>Количество</h5></td>
                     <td>
                         <h5>300</h5></td>
                     <td>
@@ -52,10 +52,10 @@
                 <tr>
                     <td>СК125</td>
                     <td><input class="form-control input-sm" type="number" min="0" name=kol_125 value="0"></td>
-                    <td><input class="form-control input-sm" type="number" min="0" name=125_30 value="0" size="5"></td>
-                    <td><input class="form-control input-sm" type="number" min="0" name=125_40 value="0" size="5"></td>
-                    <td><input class="form-control input-sm" type="number" min="0" name=125_50 value="0" size="5"></td>
-                    <td><input class="form-control input-sm" type="number" min="0" name=125_60 value="0" size="5"></td>
+                    <td><input class="form-control input-sm" type="number" min="0" name=125_30 value="0"></td>
+                    <td><input class="form-control input-sm" type="number" min="0" name=125_40 value="0"></td>
+                    <td><input class="form-control input-sm" type="number" min="0" name=125_50 value="0"></td>
+                    <td><input class="form-control input-sm" type="number" min="0" name=125_60 value="0"></td>
                 </tr>
                 <tr>
                     <td>СК100</td>
@@ -99,18 +99,15 @@
                 </tr>
             </table>
         </div>
-    </div>
 
-    <hr>
 
-    <div class="container">
         <div class="form-group" style="max-width: 600px;">
             <h4>Островные стеллажи</h4>
             <table class="table-striped table-condensed">
                 <tr>
                     <td><label for="height_stell_ostrov">Высота стеллажей</label></td>
                     <td><label for="base_polka_ostrov">Базовая полка</label></td>
-                    <td><label for="dop_stoyka_ostrov">Колличество дополнительных стоек</label></td>
+                    <td><label for="dop_stoyka_ostrov">Количество дополнительных стоек</label></td>
                 </tr>
                 <tr valign="top">
                     <td><select class="form-control input-sm" name=height_stell_ostrov>
@@ -118,20 +115,19 @@
                 <option value="2200">2200</option>
                 <option value="2400">2400</option>
                 </select></td>
-                    <td><select class="form-control input-sm" name=base_polka_ostrov>
+                    <td><select class="form-control input-sm" name=base_polka_ostrov style="min-width: 65px;">
                 <option value="500">500</option>
                 <option value="400">400</option>
                 <option value="600">600</option>
                 </select></td>
-                    <td><input class="form-control input-sm" type="text" name=dop_stoyka_ostrov value="0"> </p>
+                    <td><input class="form-control input-sm" type="number" min="0" name=dop_stoyka_ostrov value="0"> </p>
                     </td>
                 </tr>
                 <div>
                     <table class="table-striped table-bordered" >
                         <tr align="center">
-                            <td>
-                                <h5>Наименование<h5></td>
-                    <td><h5>Колличество<h5></td>
+                    <td><h5><h5></td>
+                    <td><h5>Количество<h5></td>
                     <td><h5>300<h5></td>
                     <td><h5>400<h5></td>
                     <td><h5>500<h5></td>
@@ -171,12 +167,12 @@
                 </tr>
             </table>
             <hr>
-            <div style="margin-left: 80%;">
+            <!-- <div style="margin-left: 80%;"> -->
             <input type="submit" class="btn btn-success btn-lg"  value="Расчет" >
-            </div>
+            <!-- </div> -->
             </div>
         </div>
-    </div>
+
 
 </form>
 

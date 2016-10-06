@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ComplektSK, ComplektSKCalc
+from .models import ComplektSK, ComplektSKCal
 
 
 # class NameAdmin(admin.ModelAdmin):
@@ -10,4 +10,3 @@ class ComplektSKAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'price', 'weight')
 
 admin.site.register(ComplektSK, ComplektSKAdmin)
-admin.site.register(ComplektSKCalc)
