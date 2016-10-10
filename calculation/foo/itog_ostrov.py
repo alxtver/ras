@@ -321,6 +321,7 @@ def polki(list_post):
     pass
 
 
+
 def overall_ostrov(kol_total_ostrov, list_post):
     paneli_friza(list_post)
     kron(list_post)

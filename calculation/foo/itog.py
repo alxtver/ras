@@ -468,6 +468,7 @@ def polki(list_post):
     pass
 
 
+
 def overall(kol_total,list_post):
     paneli_friza(list_post)
     kron(list_post)

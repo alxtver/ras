@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response, render
 from calculation.models import ComplektSK, ComplektSKCal
 from calculation.foo.itog import overall, createbase, deletenull, createdickt
 from calculation.foo.itog_ostrov import overall_ostrov
+from calculation.foo.opcii import overall_opcii
 from calculation.foo.excel_out import WriteToExcel
 from django.template import loader, RequestContext
 from django.db import transaction
@@ -17,6 +18,9 @@ def base(request):
     if request.method == 'POST':
 
         list_post = request.POST.copy()
+
+
+
         nacenka = int(request.POST['nacenka'])
         discont = int(request.POST['discont'])
 
@@ -49,6 +53,7 @@ def base(request):
 
         overall(kol_total, list_post)
         overall_ostrov(kol_total_ostrov, list_post)
+        overall_opcii(list_post)
         #Расчет сумм цены и веса
         i = 1
         itog_price = 0
