@@ -1,10 +1,9 @@
-from calculation.models import ComplektSKCal
 from django.http import HttpResponse
 import io
 from xlsxwriter.workbook import Workbook
 
 
-def WriteToExcel():
+def WriteToExcel(a):
     output = io.BytesIO()
 
     workbook = Workbook(output, {'in_memory': True})
@@ -19,26 +18,24 @@ def WriteToExcel():
     worksheet.set_column('A:A', 5)
     worksheet.set_column('B:B', 30)
     worksheet.set_column('C:C', 13)
-    i = 0
+
     worksheet.write(0, 1, 'Расчет стеллажей', bold)
     worksheet.write(2, 1, 'Наименование', format)
     worksheet.write(2, 2, 'Колличество', format)
     worksheet.write(2, 3, 'Цена', format)
     worksheet.write(2, 4, 'Сумма', format)
     worksheet.write(2, 5, 'Вес', format)
+
     row = 3
-    col = 1
-    values = ComplektSKCal.objects.all()
     sm, sw = 0, 0
-    for value in values:
-        worksheet.write(row, col, value.name, format)
-        worksheet.write(row, col + 1, value.number, format1)
-        worksheet.write(row, col + 2, value.price, format1)
-        worksheet.write(row, col + 3, value.summ, format1)
-        sm += int(value.summ)
-        worksheet.write(row, col + 4, value.weight, format2)
-        sw += int(value.weight)
-        i += 1
+    for i in a:
+        worksheet.write(row, 1, i['pname'], format)
+        worksheet.write(row, 2, i['pnumber'], format1)
+        worksheet.write(row, 3, i['pprice'], format1)
+        worksheet.write(row, 4, i['psumm'], format1)
+        sm += int(i['psumm'])
+        worksheet.write(row, 5, i['pweight'], format2)
+        sw += int(i['pweight'])
         row += 1
     strrow = str(row)
 
@@ -48,7 +45,11 @@ def WriteToExcel():
     worksheet.write(row, 3, '', format)
     worksheet.write(row, 4, sm, format)
     worksheet.write(row, 5, sw, format)
+
     workbook.close()
+
+
+
 
     output.seek(0)
 

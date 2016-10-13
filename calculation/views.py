@@ -10,16 +10,13 @@ from django.http import HttpResponse
 
 
 
-
-
+y = 0
 @transaction.atomic
 def base(request):
     errors = []
     if request.method == 'POST':
 
         list_post = request.POST.copy()
-
-
 
         nacenka = int(request.POST['nacenka'])
         discont = int(request.POST['discont'])
@@ -43,36 +40,52 @@ def base(request):
         count = ComplektSK.objects.all().count()
         ComplektSKCal.objects.all().delete()
         #Расчет стоимости с учетом скидки и наценки
-        i = 1
-        while i <= count:
-                 b = ComplektSK.objects.get(id=i)
-                 price_i = round(b.price+(b.price/100*nacenka)-(b.price/100*discont), 2)
-                 c = ComplektSKCal(id = b.id, name=b.name, number=0, summ=0, price=price_i,  weight=b.weight)
-                 c.save()
-                 i += 1
+
+        for b in ComplektSK.objects.all():
+            price_i = round(b.price+(b.price/100*nacenka)-(b.price/100*discont), 2)
+            c = ComplektSKCal(id = b.id, name=b.name, number=0, summ=0, price=price_i,  weight=b.weight)
+            c.save()
 
         overall(kol_total, list_post)
         overall_ostrov(kol_total_ostrov, list_post)
         overall_opcii(list_post)
+
         #Расчет сумм цены и веса
-        i = 1
         itog_price = 0
         itog_weight = 0
-        while i <= count:
-                 b = ComplektSKCal.objects.get(id=i)
-                 b.summ = b.number*b.price
-                 weight = ComplektSKCal.objects.get(id=i).weight
-                 number = ComplektSKCal.objects.get(id=i).number
-                 i_weight = weight*number
-                 b.weight = i_weight
-                 itog_weight += i_weight
-                 itog_price += b.summ
-                 b.save()
-                 i += 1
+        for b in ComplektSKCal.objects.all():
+            b.summ = b.number*b.price
+            weight = b.weight
+            number = b.number
+            i_weight = weight*number
+            b.weight = i_weight
+            itog_weight += i_weight
+            itog_price += b.summ
+            b.save()
+
         deletenull()
 
         order = ComplektSKCal.objects.all().order_by('name')
+
         x = list(order)
+        #make json type array begin
+        response_data = []
+        final_response = {}
+
+        for p in ComplektSKCal.objects.all():
+            response_record = {}
+            response_record['pname'] = p.name
+            response_record['pnumber'] = p.number
+            response_record['pprice'] = p.price
+            response_record['psumm'] = p.summ
+            response_record['pweight'] = p.weight
+            response_data.append(response_record)
+
+        final_response["product"] = response_data
+        #make json type array end
+
+        request.session['product'] = final_response
+        print(request.session['product'])
         complekts = createdickt()
         return render(request, 'itogform.html', locals())
         # return render_to_response('itogform.html', locals(), context=RequestContext(request))
@@ -81,8 +94,7 @@ def base(request):
 
 
 def catalog(request):
-    order = ComplektSK.objects.all().order_by('id')
-    maches = list(order)
+    maches = list(ComplektSK.objects.all().order_by('id'))
     return render_to_response('alldb.html', {'maches': maches})
 
 
@@ -102,5 +114,7 @@ def search(request):
 
 
 def excel(request):
-    response = WriteToExcel()
+    a = request.session['product']
+    print(a['product'])
+    response = WriteToExcel(a['product'])
     return response

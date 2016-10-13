@@ -31,6 +31,7 @@ def createdickt():
         value = ComplektSK.objects.get(id=i)
         complekts[value.name] = dict(number=0, price=value.price, weight=value.weight)
         i += 1
+    print(complekts['Полка 500 СК125']['price'])
     return complekts
 
 
