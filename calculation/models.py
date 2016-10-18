@@ -6,7 +6,7 @@ class ComplektSK(models.Model):
                             blank=False, null = False,
                             verbose_name = 'Наименование')
     price = models.FloatField(blank = False, null = False, verbose_name = 'Цена')
-    weight = models.FloatField( blank = True, verbose_name = 'Вес')
+    weight = models.FloatField(blank = True, verbose_name = 'Вес')
     class Meta:
         verbose_name = 'Комплектующие'
         verbose_name_plural = 'Комплектующие'

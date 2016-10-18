@@ -9,43 +9,36 @@
     {% endblock %}
 {% block content %}
 
-    <form action="" method="post">
-{% for i in data %}
-<tr>
-   <td>{{ data[i] }}</td>
-   <td></td>
-
-</tr>
-{% endfor %}
-<div class="block1">
-<p class="font_text"> Расчет стеллажей Русь </p>
-
 <div style="width: 700px">
+    <form action="" method="post">
+        <p class="font_text"> Расчет стеллажей Русь </p>
 <table class="table table-striped table-bordered table-condensed" id="table">
+    <tr>
+    	<td>Наименование</td>
+        <td>Количество</td>
+    	<td>Цена</td>
+        <td>Сумма</td>
+    	<td>Вес</td>
+    </tr>
+{% for a, b, c, d, e in list_base_dict %}
 <tr>
-	<td>Наименование</td>
-    <td>Количество</td>
-	<td>Цена</td>
-    <td>Сумма</td>
-	<td>Вес</td>
-</tr>
-{% for i in x %}
-<tr>
-	<td>{{ i.name }}</td>
-    <td>{{ i.number }}</td>
-	<td>{{ i.price }}</td>
-    <td>{{ i.summ }}</td>
-    <td>{{ i.weight }}</td>
+   <td>{{ a }}</td>
+   <td>{{ b }}</td>
+   <td>{{ c }}</td>
+   <td>{{ d }}</td>
+   <td>{{ e }}</td>
 </tr>
 {% endfor %}
-	<td>Итого</td>
-    <td></td>
-	<td></td>
-    <td>{{ itog_price }}</td>
-	<td>{{  itog_weight }}</td>
- </table>
+<td>Итого</td>
+<td></td>
+<td></td>
+<td>{{ itog_price }}</td>
+<td>{{  itog_weight }}</td>
+</table>
+
 </div>
-</div>
+
+
     <div class="block1" >
         <script type="text/javascript">
         function printDiv()

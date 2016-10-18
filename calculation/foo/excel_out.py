@@ -48,10 +48,7 @@ def WriteToExcel(a):
 
     workbook.close()
 
-
-
-
-    output.seek(0)
+    # output.seek(0)
 
     response = HttpResponse(output.read(), content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
     response['Content-Disposition'] = "attachment; filename=report.xlsx"
