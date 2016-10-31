@@ -4,7 +4,9 @@
 
 
 {% block content %}
+
 <form action="" method="post">{% csrf_token %}
+
     <div id="feedbackP">
         <div id="feedbackButton">
             Опции
@@ -14,54 +16,46 @@
         <p class="font_form_text"> Скидка
             <input class="form-control" type="number" min="0" name=discont value="0" size="5"> </p>
     </div>
+<div class="col-md-12 col-xs-12">
     <div class="checkbox">
         <label>
           <input type="checkbox" value="" name="cennniki">
           Ценникодержатели
         </label>
+    </div>
+    <div class="checkbox">
         <label>
           <input type="checkbox" value="" name="ogragdeniya">
           Ограждения
         </label>
     </div>
+</div>
+        <div class="col-md-6 col-xs-12">
 
-        <div class="form-group" style="max-width: 600px;">
             <h4>Пристенные стеллажи</h4>
-            <table class="table-striped table-condensed">
-                <tr>
-                    <td><label for="height_stell">Высота стеллажей</label></td>
-                    <td><label for="base_polka">Базовая полка</label></td>
-                    <td><label for="dop_stoyka">Количество дополнительных стоек</label></td>
-                </tr>
-                <tr valign="top">
-                    <td><select class="form-control input-sm" name="height_stell">
+                <label for="height_stell">Высота стеллажей</label>
+                <select class="form-control input-sm" name="height_stell">
                 <option value="2200">2200</option>
                 <option value="1600">1600</option>
                 <option value="2400">2400</option>
-                </select></td>
-                    <td><select class="form-control input-sm" name="base_polka" style="min-width: 65px;">
+                </select>
+                <label for="base_polka">Базовая полка</label>
+                <select class="form-control input-sm" name="base_polka" style="min-width: 65px;">
                 <option value="500">500</option>
                 <option value="400">400</option>
                 <option value="600">600</option>
-                </select></td>
-                    <td><input class="form-control input-sm" type="number" min="0" name=dop_stoyka value="0"> </p>
-                    </td>
-                </tr>
-            </table>
+                </select>
+                <label for="dop_stoyka">Количество дополнительных стоек</label>
+                <input class="form-control input-sm" type="number" min="0" name=dop_stoyka value="0"> <p></p>
+
             <table class="table-striped table-bordered">
                 <tr align="center">
-                    <td>
-                        <h5>Наименование</h5></td>
-                    <td>
-                        <h5>Количество</h5></td>
-                    <td>
-                        <h5>300</h5></td>
-                    <td>
-                        <h5>400</h5></td>
-                    <td>
-                        <h5>500</h5></td>
-                    <td>
-                        <h5>600</h5></td>
+                    <td></td>
+                    <td><h5>Количество</h5></td>
+                    <td><h5>300</h5></td>
+                    <td><h5>400</h5></td>
+                    <td><h5>500</h5></td>
+                    <td><h5>600</h5></td>
                 </tr>
                 <tr>
                     <td>СК125</td>
@@ -115,30 +109,24 @@
         </div>
 
 
-        <div class="form-group" style="max-width: 600px;">
+        <div class="col-md-6 col-xs-12">
             <h4>Островные стеллажи</h4>
-            <table class="table-striped table-condensed">
-                <tr>
-                    <td><label for="height_stell_ostrov">Высота стеллажей</label></td>
-                    <td><label for="base_polka_ostrov">Базовая полка</label></td>
-                    <td><label for="dop_stoyka_ostrov">Количество дополнительных стоек</label></td>
-                </tr>
-                <tr valign="top">
-                    <td><select class="form-control input-sm" name=height_stell_ostrov>
+                <label for="height_stell_ostrov">Высота стеллажей</label>
+                <select class="form-control input-sm" name=height_stell_ostrov>
                 <option value="1600">1600</option>
                 <option value="2200">2200</option>
                 <option value="2400">2400</option>
-                </select></td>
-                    <td><select class="form-control input-sm" name=base_polka_ostrov style="min-width: 65px;">
+                </select>
+                <label for="base_polka_ostrov">Базовая полка</label>
+                <select class="form-control input-sm" name=base_polka_ostrov style="min-width: 65px;">
                 <option value="500">500</option>
                 <option value="400">400</option>
                 <option value="600">600</option>
-                </select></td>
-                    <td><input class="form-control input-sm" type="number" min="0" name=dop_stoyka_ostrov value="0"> </p>
-                    </td>
-                </tr>
-                <div>
-                    <table class="table-striped table-bordered" >
+                </select>
+                <label for="dop_stoyka_ostrov">Количество дополнительных стоек</label>
+                <input class="form-control input-sm" type="number" min="0" name=dop_stoyka_ostrov value="0"><p></p>
+
+            <table class="table-striped table-bordered">
                         <tr align="center">
                     <td><h5><h5></td>
                     <td><h5>Количество<h5></td>
@@ -180,12 +168,12 @@
                     <td><input class="form-control input-sm" type="number" min="0" name=65_60_ostrov value="0" </td>
                 </tr>
             </table>
-            <hr>
-            <!-- <div style="margin-left: 80%;"> -->
-            <input type="submit" class="btn btn-success btn-lg"  value="Расчет" >
-            <!-- </div> -->
-            </div>
         </div>
+
+        <div class="span2">
+        <p><button type="submit" class="btn btn-success btn-block">Расчет</button></p>
+        </div>
+
 
 
 </form>

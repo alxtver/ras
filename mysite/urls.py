@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^catalog/$', views.catalog),
     url(r'^excel/$', views.excel),
     url(r'^search/$', views.search),
+    # url(r'^update_session/$', views.update_session),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

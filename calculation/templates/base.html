@@ -12,65 +12,67 @@
     <title>{% block title %} {% endblock %}</title>
 {% load staticfiles %}
     <!-- Bootstrap core CSS -->
-    <link href="{% static "/css/bootstrap.min.css" %}" rel="stylesheet" type="text/css">
-    <link href="{% static "/css/sticky-footer-navbar.css" %}" rel="stylesheet">
+
+<link href="{% static "/css/bootstrap.css" %}" rel="stylesheet" type="text/css">
+
+<!-- Custom styles for this template -->
+
+<link href="{% static "/css/sticky-footer-navbar.css" %}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <!-- <link href="sticky-footer-navbar.css" rel="stylesheet"> -->
   </head>
 
   <body >
-<!-- Fixed navbar -->
-    <div class="pos-f-t">
-      <div class="collapse" id="navbar-header">
-        <div class="container bg-inverse p-a-1">
-          <h3>Collapsed content</h3>
-          <p>Toggleable via the navbar brand.</p>
-        </div>
-      </div>
-      <nav class="navbar navbar-inverse" role="navigation">
+      <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Расчет стеллажей</a>
+          
         </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/catalog/">Номенклатура</a></li>
+            <li><a href="/">Расчет</a></li>
+            <li><a href="/catalog/">Комплектующие</a></li>
             <li><a href="/search/">Поиск</a></li>
-
           </ul>
-        </li>
-          </ul>
-
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/admin/">Admin</a></li>
+            <li><a href="/admin/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
-        </div><!-- /.navbar-collapse -->
-      </nav>
-    </div>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
 
     <!-- Begin page content -->
-    <div class="container">
-      <div class="p-t-0">
-        {% block content %} {% endblock %}
-      </div>
 
+    <div class="container">
+    <div class="row">
+
+        {% block content %} {% endblock %}
+
+    </div>
     </div>
 
 
 
-    <footer class="footer" style="background-color=#0F1619;">
+    <footer class="footer">
       <div class="container">
           <p class="text-muted">Python + Django. <a href="mailto:alxtver@gmail.com">  alxtver@gmail.com</a></p>
         <!-- <span class="text-muted">Python + Django. <a href="mailto:alxtver@gmail.com">  alxtver@gmail.com</a></span> -->
       </div>
     </footer>
+    <!-- Bootstrap core JavaScript
+        ================================================== -->
 
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -79,6 +81,7 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="{% static "/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "/js/my.js" %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
   </body>
